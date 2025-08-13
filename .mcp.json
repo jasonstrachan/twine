@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/jason/projects/twine"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}

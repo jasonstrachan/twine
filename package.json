@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.js",
-    "vite": "vite",
+    "vite": "vite --force",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "rm -rf node_modules/.vite dist",
+    "clean:cache": "rm -rf node_modules/.vite"
   },
   "dependencies": {
     "@pixi/react": "^8.0.3",
