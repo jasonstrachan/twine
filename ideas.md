@@ -1,7 +1,0 @@
-- MyMind like extension that summarizes and organizes your browsing saves/bookmarks to decide what to learn and read using AI.
-- Talk to computer and thoughts are organized live on a tldr canvas side by side to a rich markdown render for individual brainstorming and collaborative sessions.
-- Community browser: download Reddit dataset, organize all the communities and micro-communities by clustering, understand outcomes, problems, trends.
-- Turn AI tools like VEO 3 + image generation to start creating rich micro films all the way out to full films as models get better.
-- Build the context engine inside of Augment Code and turn it into a command line tool that can be used in all the agents.
-- Life goal organizer to go from high level to low level times on the calendar and examine against how time is actually spent to see how you're progressing towards happiness, success without pushing.
-- AI event planner for people who are spontaneous and wish they would have something organized for the weekend but are too busy to research all that and plan, kind of how rich people have chief of staff do.
