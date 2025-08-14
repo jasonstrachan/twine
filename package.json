@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.js",
-    "vite": "vite --force",
+    "vite": "NODE_OPTIONS='--max-old-space-size=4096' vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

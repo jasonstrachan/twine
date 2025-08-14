@@ -2,10 +2,17 @@
 
 Twine is an AI-powered application for organizing thoughts, images, and ideas through a slick UI. It enables real-time brainstorming with voice input (via Whisper), automatic organization of content, and persistent storage of idea threads. Think of it as a digital workspace where conversations with AI help structure and evolve your thinking.
 
+## Tech Stack
+
+- **Frontend**: React 18 with TypeScript
+- **Canvas**: PIXI.js v8 with pixi-viewport for infinite canvas
+- **State Management**: Zustand for global state
+- **Build Tool**: Vite for fast HMR and builds
+- **Styling**: TailwindCSS for UI components
+
 ## Development Partnership
 
-We're building production-quality simple code together. Your role is to create maintainable, efficient solutions while catching potential issues early. 
-dev. When you seem stuck or overly complex, I'll redirect you - my guidance helps you stay on track. 
+We're building production-quality simple code together. Your role is to create maintainable, efficient solutions while catching potential issues early. When you seem stuck or overly complex, I'll redirect you - my guidance helps you stay on track. 
 
 1. First think through the problem, read the codebase for relevant files, and write a plan
 2. The plan should have a list of todo items that you can check off as you complete them
@@ -25,6 +32,13 @@ dev. When you seem stuck or overly complex, I'll redirect you - my guidance help
 * For complex refactors: One agent identifies changes, another implements them
 
 Say: "I'll spawn agents to tackle different aspects of this problem" whenever a task has multiple independent parts.
+
+**Specialized Twine Agents** (see /docs/subagents.md for details):
+- **Expert Debugger Agent**: For complex debugging, crashes, memory leaks, performance issues
+- **Expert Frontend UI Agent**: For React optimization, Canvas/PIXI.js, state management
+- **Vite Server Agent**: For build issues, HMR problems, server crashes, configuration
+
+Example: "I'll spawn the expert debugger agent to investigate this memory leak while I continue with the feature implementation."
 
 ### Reality Checkpoints
 **Stop and validate** at these moments:
@@ -64,51 +78,42 @@ Your code must be 100% clean. No exceptions.
 - Re-read this CLAUDE.md file
 - Document current state before major changes
 
-## Go-Specific Rules
+## Tech Stack Guidelines
 
-### FORBIDDEN - NEVER DO THESE:
-- **NO interface{}** or **any{}** - use concrete types!
-- **NO time.Sleep()** or busy waits - use channels for synchronization!
-- **NO** keeping old and new code together
-- **NO** migration functions or compatibility layers
-- **NO** versioned function names (processV2, handleNew)
-- **NO** custom error struct hierarchies
-- **NO** TODOs in final code
+### PIXI.js Performance Rules 🚨
+- **Reuse objects** - Never create PIXI objects in render loops
+- **Always destroy()** - Clean up textures, sprites, graphics when done
+- **Use PIXI.Assets** - Automatic texture caching, check with `cache.has(url)`
+- **Batch operations** - Single Graphics object for multiple shapes
+- **One PIXI app** - Initialize once, destroy on unmount
 
-> **AUTOMATED ENFORCEMENT**: The smart-lint hook will BLOCK commits that violate these rules.  
-> When you see `❌ FORBIDDEN PATTERN`, you MUST fix it immediately!
+### State Management (Zustand)
+- **Split stores by domain**: blocks, connections, canvas, ui
+- **Use selectors**: `useStore(s => s.blocks.get(id))` 
+- **Never store PIXI objects** - Store IDs, lookup objects
+- **Batch PIXI updates** - Use PIXI.Ticker, not React renders
 
-### Required Standards:
-- **Delete** old code when replacing it
-- **Meaningful names**: `userID` not `id`
-- **Early returns** to reduce nesting
-- **Concrete types** from constructors: `func NewServer() *Server`
-- **Simple errors**: `return fmt.Errorf("context: %w", err)`
-- **Table-driven tests** for complex logic
-- **Channels for synchronization**: Use channels to signal readiness, not sleep
-- **Select for timeouts**: Use `select` with timeout channels, not sleep loops
+### Canvas Architecture
+- **pixi-viewport** for pan/zoom
+- **Coordinate systems**: screen ↔ world ↔ local
+- **Virtualize** - Only render visible blocks
+- **Cull off-screen** for performance
+
+### Common Issues
+- **Memory leaks** → Always destroy() PIXI objects
+- **HMR breaks** → Check app exists before creating
+- **Blur on resize** → Update renderer resolution
+- **Debug**: `globalThis.__PIXI_APP__ = app` in dev
+
+
 
 ## Implementation Standards
 
-### Our code is complete when:
-- ? All linters pass with zero issues
-- ? All tests pass  
-- ? Feature works end-to-end
-- ? Old code is deleted
-- ? Godoc on all exported symbols
-
-### Testing Strategy
-- Complex business logic ? Write tests first
-- Simple CRUD ? Write tests after
-- Hot paths ? Add benchmarks
-- Skip tests for main() and simple CLI parsing
-
-### Project Structure
-```
-cmd/        # Application entrypoints
-internal/   # Private code (the majority goes here)
-pkg/        # Public libraries (only if truly reusable)
-```
+### Code is complete when:
+- ✅ Feature works end-to-end
+- ✅ Old code is deleted
+- ✅ No console errors or warnings
+- ✅ Performance validated (60 FPS for canvas)
 
 ## Problem-Solving Together
 
@@ -122,17 +127,6 @@ When you're stuck or confused:
 
 My insights on better approaches are valued - please ask for them!
 
-## Performance & Security
-
-### **Measure First**:
-- No premature optimization
-- Benchmark before claiming something is faster
-- Use pprof for real bottlenecks
-
-### **Security Always**:
-- Validate all inputs
-- Use crypto/rand for randomness
-- Prepared statements for SQL (never concatenate!)
 
 ## Communication Protocol
 
@@ -167,30 +161,6 @@ Avoid complex abstractions or "clever" code. The simple, obvious solution is pro
 - **Thread Sharing**: Export and share organized thought threads
 - **Version History**: Track evolution of ideas over time
 
-## Tech Stack Recommendations
-
-### Frontend
-- **React/Next.js**: For the UI with server-side rendering capabilities
-- **TailwindCSS**: For rapid, responsive UI development
-- **Lexical or TipTap**: Rich text editor for markdown support
-- **Canvas API or Fabric.js**: For the visual organization canvas
-
-### Backend
-- **Node.js with Express or Fastify**: API server
-- **PostgreSQL with pgvector**: Store embeddings for semantic search
-- **Redis**: Session management and real-time features
-- **WebSockets (Socket.io)**: Real-time collaboration
-
-### AI Integration
-- **OpenAI Whisper API**: Speech-to-text processing
-- **OpenAI GPT-4**: Content organization and summarization
-- **LangChain**: Orchestrate AI workflows
-- **Pinecone or Weaviate**: Vector database for semantic search (alternative to pgvector)
-
-### Infrastructure
-- **Docker**: Containerization for consistent development
-- **MinIO**: Local S3-compatible storage for images/audio
-- **Bull/BullMQ**: Job queue for async processing
 
 ## Development Commands
 

@@ -131,7 +131,7 @@ function startDevServer() {
   process.on('SIGINT', () => shutdown('SIGINT'));
   process.on('SIGHUP', () => shutdown('SIGHUP'));
   
-  // Handle child process exit
+  // Handle child process exit with auto-restart
   viteProcess.on('exit', (code, signal) => {
     console.log(`Dev server exited with code ${code} and signal ${signal}`);
     
@@ -142,7 +142,18 @@ function startDevServer() {
       // Ignore
     }
     
-    process.exit(code || 0);
+    // Auto-restart if it wasn't a deliberate shutdown
+    if (signal !== 'SIGTERM' && signal !== 'SIGINT' && signal !== 'SIGHUP') {
+      console.log('🔄 Auto-restarting Vite server in 2 seconds...');
+      setTimeout(() => {
+        killExistingServer();
+        setTimeout(() => {
+          startDevServer();
+        }, 500);
+      }, 2000);
+    } else {
+      process.exit(code || 0);
+    }
   });
   
   viteProcess.on('error', (error) => {

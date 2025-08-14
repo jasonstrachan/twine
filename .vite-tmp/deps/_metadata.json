@@ -1,0 +1,115 @@
+{
+  "hash": "3f3f8599",
+  "configHash": "bf167bae",
+  "lockfileHash": "5d464f1e",
+  "browserHash": "389cd78f",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "f1a19560",
+      "needsInterop": true
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "5c48fb4f",
+      "needsInterop": true
+    },
+    "pixi.js": {
+      "src": "../../node_modules/pixi.js/lib/index.mjs",
+      "file": "pixi__js.js",
+      "fileHash": "858b26a1",
+      "needsInterop": false
+    },
+    "@pixi/react": {
+      "src": "../../node_modules/@pixi/react/lib/index.mjs",
+      "file": "@pixi_react.js",
+      "fileHash": "7cd0cfd0",
+      "needsInterop": false
+    },
+    "zustand": {
+      "src": "../../node_modules/zustand/esm/index.mjs",
+      "file": "zustand.js",
+      "fileHash": "f484695b",
+      "needsInterop": false
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "24ae0c3b",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "b5ff77bf",
+      "needsInterop": true
+    },
+    "pixi-viewport": {
+      "src": "../../node_modules/pixi-viewport/dist/pixi_viewport.js",
+      "file": "pixi-viewport.js",
+      "fileHash": "f441b6c1",
+      "needsInterop": false
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "f7ca882b",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "browserAll-FSYH47QF": {
+      "file": "browserAll-FSYH47QF.js"
+    },
+    "webworkerAll-FWXMNSH6": {
+      "file": "webworkerAll-FWXMNSH6.js"
+    },
+    "chunk-WIEAV2B7": {
+      "file": "chunk-WIEAV2B7.js"
+    },
+    "WebGPURenderer-Y2I3HSGR": {
+      "file": "WebGPURenderer-Y2I3HSGR.js"
+    },
+    "WebGLRenderer-6XLK6QZG": {
+      "file": "WebGLRenderer-6XLK6QZG.js"
+    },
+    "chunk-EMVMOXV7": {
+      "file": "chunk-EMVMOXV7.js"
+    },
+    "chunk-MY56SYPP": {
+      "file": "chunk-MY56SYPP.js"
+    },
+    "chunk-DEYA5VCL": {
+      "file": "chunk-DEYA5VCL.js"
+    },
+    "chunk-4PQ5CKFA": {
+      "file": "chunk-4PQ5CKFA.js"
+    },
+    "chunk-SIVKA2UL": {
+      "file": "chunk-SIVKA2UL.js"
+    },
+    "chunk-Z67JWJAP": {
+      "file": "chunk-Z67JWJAP.js"
+    },
+    "chunk-CTXNNCQD": {
+      "file": "chunk-CTXNNCQD.js"
+    },
+    "chunk-RZXYLP65": {
+      "file": "chunk-RZXYLP65.js"
+    },
+    "chunk-FYV5QAZU": {
+      "file": "chunk-FYV5QAZU.js"
+    },
+    "chunk-NZOTMLR5": {
+      "file": "chunk-NZOTMLR5.js"
+    },
+    "chunk-QWUNFYU3": {
+      "file": "chunk-QWUNFYU3.js"
+    },
+    "chunk-6PEHRAEP": {
+      "file": "chunk-6PEHRAEP.js"
+    }
+  }
+}
